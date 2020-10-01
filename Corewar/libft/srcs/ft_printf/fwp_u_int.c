@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fwp_int.c                                          :+:      :+:    :+:   */
+/*   fwp_u_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cpoulet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: emedea <emedea@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/21 11:25:37 by cpoulet           #+#    #+#             */
-/*   Updated: 2017/01/22 11:53:51 by cpoulet          ###   ########.fr       */
+/*   Updated: 2020/10/01 18:38:10 by emedea           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	pt_u_num(unsigned long long nb, t_form *form, t_data *data, int i)
 	return (i);
 }
 
-static void	u_int(unsigned long long nb, t_form *form, int wmax, t_data *data)
+static void	u_int_costa(unsigned long long nb, t_form *form, int wmax, t_data *data)
 {
 	int i;
 	int	nblen;
@@ -62,6 +62,6 @@ void		fwp_u_int(unsigned long long nb, t_form *form, t_data *data)
 	wmax = (form->zero && form->pre == -1 && !form->minus) ? len : wmax;
 	wmax -= (!nb && form->pre == 0) ? 1 : 0;
 	data->buff = len;
-	u_int(nb, form, wmax, data);
+	u_int_costa(nb, form, wmax, data);
 	data->length += len;
 }

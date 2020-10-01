@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+         #
+#    By: emedea <emedea@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 12:10:08 by kcosta            #+#    #+#              #
-#    Updated: 2017/04/27 14:37:25 by kcosta           ###   ########.fr        #
+#    Updated: 2020/10/01 18:51:35 by emedea           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ CORE_HEADERS	:= $(addprefix $(INCLUDES_PATH), $(CORE_HEADERS_FILES))
 # ========== Libraries ========= #
 LIBFT_PATH		:= libft/
 LIBFT_INCLUDES	:= -I libft/includes
-LIBFT			:= -L $(LIBFT_PATH) -lft -lncurses -lpthread
+LIBFT			:= -L libft -lft -lncurses -lpthread
 # ============================== #
 
 .PHONY: all libft clean fclean re
@@ -137,10 +137,10 @@ $(CORE_OBJS_PATH)%.o: $(CORE_PATH)%.c $(CORE_HEADERS) $(LIBFT_PATH)libft.a
 	$(CC) $(FLAGS) $(INCLUDES) $(LIBFT_INCLUDES) -o $@ -c $<
 
 $(ASM): $(ASM_OBJS)
-	$(CC) $(FLAGS) $(LIBFT) $(ASM_OBJS) -o $@
+	$(CC) $(FLAGS) $(ASM_OBJS) -o $@ $(LIBFT)
 
 $(COREWAR): $(CORE_OBJS)
-	$(CC) $(FLAGS) $(LIBFT) $(CORE_OBJS) -o $@
+	$(CC) $(FLAGS) $(CORE_OBJS) -o $@ $(LIBFT)
 
 clean:
 	@make -C $(LIBFT_PATH) clean &> /dev/null

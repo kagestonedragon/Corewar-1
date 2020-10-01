@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scanner.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcosta <kcosta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: emedea <emedea@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:52:23 by kcosta            #+#    #+#             */
-/*   Updated: 2017/04/27 13:36:15 by kcosta           ###   ########.fr       */
+/*   Updated: 2020/10/01 18:38:48 by emedea           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void					ft_delete_label(void *content, size_t size)
 {
 	ft_strdel((char**)&content);
 	size = 0;
+	(void)size;
 }
 
 int						lexical_error(t_token token, int ft_errnum)
