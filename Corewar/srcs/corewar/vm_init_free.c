@@ -36,7 +36,7 @@ t_list	*kill_elem_lst(t_vm *v, t_list *process, t_list **previous)
 	return (process);
 }
 
-void	vm_init_var(t_vm *v)
+void	vm_init_var(t_vm *v) // инициализируем структуру виртуальной машины, кастуем все на NULL, 0, -1
 {
 	v->process_lst = NULL;
 	v->nprocess = 0;
@@ -54,21 +54,21 @@ void	vm_init_var(t_vm *v)
 	v->nplayer_cust = 0;
 }
 
-void	vm_init(t_vm *v)
+void	vm_init(t_vm *v) // инициализация виртуальной машины
 {
 	int i;
 
-	ft_memset(v->a.arena, 0, sizeof(unsigned char) * MEM_SIZE);
-	ft_memset(v->a.owner, -1, sizeof(char) * MEM_SIZE);
-	ft_memset(v->a.type, -1, sizeof(char) * MEM_SIZE);
+	ft_memset(v->a.arena, 0, sizeof(unsigned char) * MEM_SIZE); // выделяем место под арену
+	ft_memset(v->a.owner, -1, sizeof(char) * MEM_SIZE); // выделяем место под хозяина арены (для визуализации)
+	ft_memset(v->a.type, -1, sizeof(char) * MEM_SIZE); // выделяем место под тип арены (для визуализации)
 	vm_init_var(v);
 	i = 0;
-	while (i < MAX_PLAYERS)
+	while (i < MAX_PLAYERS) // пока не перебрали всех игроков
 	{
-		v->p[i].nplayer = 0;
-		ft_memset(v->p[i].name, 0, PROG_NAME_LENGTH);
-		ft_memset(v->p[i].comment, 0, COMMENT_LENGTH);
-		ft_memset(v->p[i].code, 0, CHAMP_MAX_SIZE);
+		v->p[i].nplayer = 0; // присваиваем номер игрока (?)
+		ft_memset(v->p[i].name, 0, PROG_NAME_LENGTH); // выделяем место под имя игрока
+		ft_memset(v->p[i].comment, 0, COMMENT_LENGTH); // выделяем место под комментарий игрока
+		ft_memset(v->p[i].code, 0, CHAMP_MAX_SIZE); // выделяем место под код чемпиона
 		i++;
 	}
 }

@@ -17,10 +17,10 @@ int		main(int argc, char **argv)
 	t_vm		vm;
 	t_viewer	v;
 
-	vm_init(&vm); // влад
-	parse_opt(argc, argv, &vm); // влад
+	vm_init(&vm); // инициализация виртуальной машины
+	parse_opt(argc, argv, &vm); // парсинг входных параметров
 	if (!vm.nplayer)
-		print_help(); // не надо
+		print_help(); // выводим функционал, если кол-во игроков равно нулю
 	vm.display_mode = (vm.opt_flags & FLAG_OPT_NCURSES) ? 2 : 3;
 	vm.display_mode = (vm.opt_flags & FLAG_OPT_VERBOSE) ? 1 : vm.display_mode;
 	load_arena(&vm); // никита

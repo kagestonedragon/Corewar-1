@@ -12,13 +12,13 @@
 
 #include "corewar.h"
 
-void	xerror(char *error_msg, int error_id)
+void	xerror(char *error_msg, int error_id) // функция ошибки
 {
 	ft_putendl_fd(error_msg, 2);
 	exit(error_id);
 }
 
-int		is_corewar_execmagic(char *file)
+int		is_corewar_execmagic(char *file) // проверяем содержится ли в начале файла magic header
 {
 	unsigned char	exec_magic[4];
 	int				fd;
@@ -38,7 +38,7 @@ int		is_corewar_execmagic(char *file)
 	return (1);
 }
 
-int		get_prog_size(char *file)
+int		get_prog_size(char *file) // получаем размер файла с чемпионом
 {
 	int fd;
 	int size;
@@ -52,7 +52,7 @@ int		get_prog_size(char *file)
 	return (size - sizeof(t_header));
 }
 
-int		is_cor_file(char *file)
+int		is_cor_file(char *file) // проверяем действительно ли это .cor файл
 {
 	if (!file)
 		return (1);
@@ -63,11 +63,11 @@ int		is_cor_file(char *file)
 
 int		is_valid_player(char *file)
 {
-	if (is_cor_file(file) != 0)
+	if (is_cor_file(file) != 0) // проверяем действительно ли это .cor файл
 		return (0);
-	if (get_prog_size(file) > CHAMP_MAX_SIZE)
+	if (get_prog_size(file) > CHAMP_MAX_SIZE) // проверяем что размер чемпиона не больше чем максимально возможный
 		return (0);
-	if (!is_corewar_execmagic(file))
+	if (!is_corewar_execmagic(file)) // проверяем что есть magic header
 		return (0);
 	return (1);
 }
